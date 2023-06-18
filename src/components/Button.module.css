@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 15px;
+    border: 2px solid blue;
+    overflow: hidden;
+    font-size: 2rem;
+    margin: 0.5rem;
+}
+
+.btn {
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.452);
+}
