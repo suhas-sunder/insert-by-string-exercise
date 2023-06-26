@@ -7,8 +7,8 @@ const Home = () => {
 
   return (
     <div className={Styles.buttons}>
-      {btnText.map((text) => (
-        <Button text={text} />
+      {btnText.map((text, index) => (
+        <Button key={index} text={text} />
       ))}
     </div>
   );
