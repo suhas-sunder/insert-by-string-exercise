@@ -19,25 +19,23 @@ const Home = () => {
     },
   ]);
 
-  const handleUpdate = (id, direction) => {
+  // Add rectangles or update text within rectangle
+  const handleUpdate = (id, direction, text) => {
     let newArr = [];
 
     const updateArr = (obj, dir) => {
-      if (obj.id === id && direction.includes(dir))
+      if (obj.id === id && direction === dir)
         newArr.push({ id: generateID(), btnText: obj.btnText });
     };
 
-    if (!direction.includes("middle")) {
-      btnText.forEach((obj) => {
-        updateArr(obj, "left");
-        newArr.push(obj);
-        updateArr(obj, "right");
-
-        setBtnText(newArr);
-      });
-    } else {
-      console.log(id);
-    }
+    btnText.forEach((obj) => {
+      updateArr(obj, "left");
+      obj.id === id
+        ? newArr.push({ id: id, btnText: text })
+        : newArr.push(obj);
+      updateArr(obj, "right");      
+    });
+    setBtnText(newArr);
   };
 
   return (
@@ -47,7 +45,8 @@ const Home = () => {
           key={text.id}
           text={text.btnText}
           id={text.id}
-          updateArr={handleUpdate}
+          addSquare={handleUpdate}
+          textChange={handleUpdate}
         />
       ))}
     </div>

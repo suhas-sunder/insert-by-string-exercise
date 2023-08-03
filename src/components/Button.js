@@ -1,24 +1,39 @@
 import Styles from "./Button.module.css";
 
-const Button = ({ text, id, updateArr }) => {
-  const handleClick = (e) => {
-    const dir = e.target.id.split("_")[0];
-    const id = e.target.id.split("_")[1];
-    updateArr(id, dir);
+const Button = ({ text, id, addSquare, textChange }) => {
+  // Add new rectangle
+  const handleClick = (targetID) => {
+    const dir = targetID.split("_")[0];
+    const id = targetID.split("_")[1];
+    addSquare(id, dir, text);
+  };
+
+  // Update rectangle value
+  const handleChange = (id, value) => {
+    const dir = null;
+    // Only allow 6 chars per input
+    if(value.length <= 6) addSquare(id, dir, value);
   };
 
   return (
-    <div  className={Styles.wrapper}>
-      <button      
-        id={`left_${id}`}  
-        className={Styles.btn}
-        onClick={(e) => handleClick(e)}
+    <div className={Styles.wrapper}>
+      <button
+        id={`left_${id}`}
+        className={`${Styles.btn} ${Styles.right}`}
+        onClick={(e) => handleClick(e.currentTarget.id)}
       ></button>
-      <span id={`middle_${id}`} onClick={(e) => handleClick(e)}>{text}</span>
+      <input
+        id={id}
+        className={Styles.input}
+        onChange={(e) =>
+          handleChange(e.currentTarget.id, e.currentTarget.value)
+        }
+        value={text}
+      />
       <button
         id={`right_${id}`}
-        className={Styles.btn}
-        onClick={(e) => handleClick(e)}
+        className={`${Styles.btn} ${Styles.left}`}
+        onClick={(e) => handleClick(e.currentTarget.id)}
       ></button>
     </div>
   );
