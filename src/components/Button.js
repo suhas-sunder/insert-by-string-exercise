@@ -1,20 +1,24 @@
 import Styles from "./Button.module.css";
 
-const Button = ({ text }) => {
-  const handleClick = (direction) => {
-    console.log(direction);
+const Button = ({ text, id, updateArr }) => {
+  const handleClick = (e) => {
+    const dir = e.target.id.split("_")[0];
+    const id = e.target.id.split("_")[1];
+    updateArr(id, dir);
   };
 
   return (
-    <div className={Styles.wrapper}>
-      <button
+    <div  className={Styles.wrapper}>
+      <button      
+        id={`left_${id}`}  
         className={Styles.btn}
-        onClick={() => handleClick("left")}
+        onClick={(e) => handleClick(e)}
       ></button>
-      <span>{text}</span>
+      <span id={`middle_${id}`} onClick={(e) => handleClick(e)}>{text}</span>
       <button
+        id={`right_${id}`}
         className={Styles.btn}
-        onClick={() => handleClick("right")}
+        onClick={(e) => handleClick(e)}
       ></button>
     </div>
   );
