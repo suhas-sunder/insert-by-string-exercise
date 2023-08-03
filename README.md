@@ -1,6 +1,6 @@
 # insert-by-string-exercise
 
-This is a simple exercise about working with arrays to insert characters or strings onto clickable elements on the page.
+This is a simple exercise about working with arrays to insert characters or strings onto clickable elements on the page. Additionally, I installed and implemented the React uuid library to generate unique id's to be used as keys.
 
 <img width="650" alt="image" src="https://github.com/suhas-sunder/insert-by-string-exercise/assets/77464593/a7922af7-d6ce-4847-abae-4a5ca2f10427">
 
